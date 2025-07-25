@@ -83,27 +83,38 @@
 	</dependencies>
 
 	<build>
-		<plugins>			<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>exec-maven-plugin</artifactId>
-			<version>1.6.0</version>
-			<executions>
-				<execution>
-					<phase>validate</phase>
-					<goals>
-						<goal>exec</goal>
-					</goals>
-				</execution>
-			</executions>
-			<configuration>
-				<executable>ng</executable>
-				<workingDirectory>src/main/UI</workingDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>17</source>
+					<target>17</target>
+					<release>17</release>
+				</configuration>
+			</plugin>
 
-				<arguments>
-					<argument>build</argument>
-				</arguments>
-			</configuration>
-		</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>ng</executable>
+					<workingDirectory>src/main/UI</workingDirectory>
+					<arguments>
+						<argument>build</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
